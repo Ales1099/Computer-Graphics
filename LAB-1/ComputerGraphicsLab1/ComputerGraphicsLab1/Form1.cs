@@ -27,9 +27,9 @@ namespace ComputerGraphicsLab1
 
         private const double d = 15.0d;
 
-        private double AngleX = d;
-        private double AngleY = 0;
-        private double AngleZ = 0;
+        private double AngleX = 0.0d;
+        private double AngleY = 0.0d;
+        private double AngleZ = 0.0d;
 
         private double[,] pnt;
 
