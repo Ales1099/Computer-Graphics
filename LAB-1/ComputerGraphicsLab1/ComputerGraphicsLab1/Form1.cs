@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,7 +16,6 @@ namespace ComputerGraphicsLab1
         public double[,] inmas = new double[67, 67];
         int resolutionOfArray = 67;
         int ang;
-        public delegate double functionType(double x, double z);
         List<functionType> functions = new List<functionType>();
         Bitmap bmp;
 
@@ -24,19 +23,19 @@ namespace ComputerGraphicsLab1
         private Color color_graphic;
 
         private int index_color_space = 0;
-        private int index_color_graphic = 0;
+        private int index_color_graphic = 1;
 
-        private const double d = 20.0d;
+        private const double d = 15.0d;
 
         private double AngleX = d;
-        private double AngleY = d;
-        private double AngleZ = d;
+        private double AngleY = 0;
+        private double AngleZ = 0;
 
         private double[,] pnt;
 
         private bool drawOk = false;
 
-        private Color[] colors = { Color.Black, Color.Red, Color.Green, Color.Gray, Color.Yellow };
+        private Color[] colors = { Color.Black, Color.Red, Color.Green, Color.Gray, Color.GreenYellow };
 
         public ComputerGraphicLab1()
         {
@@ -61,7 +60,9 @@ namespace ComputerGraphicsLab1
             color_space = colors[index_color_space];
             this.background.BackColor = color_space;
 
-            drawSpace();   
+            graph.setBackColor(color_space);
+            graph.setMainColor(color_graphic);
+            drawSpace();
         }
 
         private void graphic_Click(object sender, EventArgs e)
@@ -78,8 +79,9 @@ namespace ComputerGraphicsLab1
             color_graphic = colors[index_color_graphic];
             this.graphic.BackColor = color_graphic;
 
-            if(drawOk)
-                drawGraphic();
+            graph.setBackColor(color_space);
+            graph.setMainColor(color_graphic);
+            drawSpace();
             
         }
 
@@ -90,20 +92,22 @@ namespace ComputerGraphicsLab1
 
         private void draw_Click(object sender, EventArgs e)
         {
-            //drawOk = true;
-            //drawSpace();
-            graph.Draw(space.CreateGraphics(), Function.f1);
+            drawSpace();
         }
 
         public void drawSpace()
         {
-            this.space.BackColor = color_space;
+            this.space.BackColor = color_space; space.CreateGraphics().Clear(color_space);
+            graph.setAngleX((int)(turnX.Value*d));
+            graph.setAngleY((int)(turnY.Value*d));
+            graph.setAngleZ((int)(turnZ.Value*d));
+            graph.Draw(space.CreateGraphics(),functions[comboBox1.SelectedIndex]);
         }
 
         public void drawGraphic()
         {
             graph.SetFlag(false);
-            graph.Draw(space.CreateGraphics(), Function.f1);
+            graph.Draw(space.CreateGraphics(), Function.f3);
         }
 
         private void turnX_Scroll(object sender, EventArgs e)
@@ -116,9 +120,7 @@ namespace ComputerGraphicsLab1
             {
                 AngleX = (double)(turnX.Value * d);
             }
-            space.CreateGraphics().Clear(color_space);
-            graph.setAngleX(turnX.Value*15);
-            graph.Draw(space.CreateGraphics(), Function.f1);
+            drawSpace();
         }
 
         private void turnY_Scroll(object sender, EventArgs e)
@@ -131,10 +133,7 @@ namespace ComputerGraphicsLab1
             {
                 AngleY = (double)(turnY.Value * d);
             }
-            //drawSpace();
-            space.CreateGraphics().Clear(color_space);
-            graph.setAngleY(turnY.Value*15);
-            graph.Draw(space.CreateGraphics(), Function.f1);
+            drawSpace();
         }
 
         private void turnZ_Scroll(object sender, EventArgs e)
@@ -147,22 +146,25 @@ namespace ComputerGraphicsLab1
             {
                 AngleZ = (double)(turnZ.Value * d);
             }
-            //drawSpace();
-            space.CreateGraphics().Clear(color_space);
-            graph.setAngleZ(turnZ.Value*15);
-            graph.Draw(space.CreateGraphics(), Function.f2);
+            drawSpace();
         }
 
         private void ComputerGraphicLab1_Load(object sender, EventArgs e)
         {
+            comboBox1.Items.Add("y = sin(x+z)");
+            comboBox1.Items.Add("y=(x * cos(2 * z) - z * sin(2 * x)) / 4");
+            comboBox1.Items.Add("y=exp(sin(sqrt(x * x + z * z)))");
+
+            comboBox1.SelectedIndex = 0;
+
             functions.Add(Function.f1);
             functions.Add(Function.f2);
             functions.Add(Function.f3);
 
-            graph = new Graph(space.Width, space.Height);
-            graph.setAngleX(turnX.Value);
-            graph.setAngleY(turnY.Value);
-            graph.setAngleZ(turnZ.Value);
+            graph = new Graph((int)(space.Width*1.25), (int)(space.Height*1.25));
+            graph.setAngleX(turnX.Value*45);
+            graph.setAngleY(turnY.Value*45);
+            graph.setAngleZ(turnZ.Value*45);
             graph.setMaxX(Convert.ToDouble(resolutionOfArray - 1));
             graph.setMaxZ(Convert.ToDouble(resolutionOfArray - 1));
             graph.stepsXZ(Convert.ToDouble(0.5), Convert.ToDouble(0.5));
@@ -170,7 +172,6 @@ namespace ComputerGraphicsLab1
 
             graph.setBackColor(color_space);
             graph.setMainColor(color_graphic);
-            graph.setReflect(space.CreateGraphics());
         }
     }
 }
