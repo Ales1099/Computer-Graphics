@@ -98,9 +98,9 @@ namespace ComputerGraphicsLab1
         public void drawSpace()
         {
             this.space.BackColor = color_space; space.CreateGraphics().Clear(color_space);
-            graph.setAngleX((int)(turnX.Value*d));
-            graph.setAngleY((int)(turnY.Value*d));
-            graph.setAngleZ((int)(turnZ.Value*d));
+            graph.setAngleX((int)(AngleX));
+            graph.setAngleY((int)(AngleY));
+            graph.setAngleZ((int)(AngleZ));
             graph.Draw(space.CreateGraphics(),functions[comboBox1.SelectedIndex]);
         }
 
