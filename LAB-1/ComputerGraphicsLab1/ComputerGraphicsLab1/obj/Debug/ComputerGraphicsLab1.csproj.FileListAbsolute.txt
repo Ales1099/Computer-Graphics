@@ -1,0 +1,10 @@
+C:\Users\Ales1098\source\repos\ComputerGraphicsLab1\ComputerGraphicsLab1\bin\Debug\ComputerGraphicsLab1.exe.config
+C:\Users\Ales1098\source\repos\ComputerGraphicsLab1\ComputerGraphicsLab1\bin\Debug\ComputerGraphicsLab1.exe
+C:\Users\Ales1098\source\repos\ComputerGraphicsLab1\ComputerGraphicsLab1\bin\Debug\ComputerGraphicsLab1.pdb
+C:\Users\Ales1098\source\repos\ComputerGraphicsLab1\ComputerGraphicsLab1\obj\Debug\ComputerGraphicsLab1.csprojAssemblyReference.cache
+C:\Users\Ales1098\source\repos\ComputerGraphicsLab1\ComputerGraphicsLab1\obj\Debug\ComputerGraphicsLab1.ComputerGraphicLab1.resources
+C:\Users\Ales1098\source\repos\ComputerGraphicsLab1\ComputerGraphicsLab1\obj\Debug\ComputerGraphicsLab1.Properties.Resources.resources
+C:\Users\Ales1098\source\repos\ComputerGraphicsLab1\ComputerGraphicsLab1\obj\Debug\ComputerGraphicsLab1.csproj.GenerateResource.cache
+C:\Users\Ales1098\source\repos\ComputerGraphicsLab1\ComputerGraphicsLab1\obj\Debug\ComputerGraphicsLab1.csproj.CoreCompileInputs.cache
+C:\Users\Ales1098\source\repos\ComputerGraphicsLab1\ComputerGraphicsLab1\obj\Debug\ComputerGraphicsLab1.exe
+C:\Users\Ales1098\source\repos\ComputerGraphicsLab1\ComputerGraphicsLab1\obj\Debug\ComputerGraphicsLab1.pdb
